@@ -62,10 +62,10 @@ public struct StepDetails: Codable {
 // MARK: - ToolCall
 public struct StepsToolCall: Codable {
     public let id, type: String?
-    let function: Function?
+    public let function: Function?
 }
 
 // MARK: - Function
-struct Function: Codable {
-    let name, arguments: String?
+public struct Function: Codable {
+    public let name, arguments: String?
 }

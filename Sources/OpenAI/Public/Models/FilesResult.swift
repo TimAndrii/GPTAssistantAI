@@ -14,15 +14,15 @@ public struct FilesResult: Codable, Equatable {
 }
 
 public struct AllFilesResult: Codable {
-    let data: [DatumFiles]?
-    let object: String?
+    public let data: [DatumFiles]?
+    public let object: String?
 }
 
 // MARK: - Datum
 public struct DatumFiles: Codable {
-    let id, object: String?
-    let bytes, createdAt: Int?
-    let filename, purpose: String?
+    public let id, object: String?
+    public let bytes, createdAt: Int?
+    public let filename, purpose: String?
 
     enum CodingKeys: String, CodingKey {
         case id, object, bytes
