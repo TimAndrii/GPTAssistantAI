@@ -8,15 +8,15 @@
 import Foundation
 
 public struct RunSubmitToolResult: Codable {
-    let id, object: String?
-    let createdAt: Int?
-    let assistantID, threadID, status: String?
-    let startedAt, expiresAt: Int?
-    let cancelledAt, failedAt, completedAt, lastError: String?
-    let model, instructions: String?
-    let tools: [Tool]?
-    let fileIDS: [String]?
-    let metadata: Metadata?
+    public let id, object: String?
+    public let createdAt: Int?
+    public let assistantID, threadID, status: String?
+    public let startedAt, expiresAt: Int?
+    public let cancelledAt, failedAt, completedAt, lastError: String?
+    public let model, instructions: String?
+    public let tools: [Tool]?
+    public let fileIDS: [String]?
+    public let metadata: Metadata?
 
     enum CodingKeys: String, CodingKey {
         case id, object
@@ -37,5 +37,5 @@ public struct RunSubmitToolResult: Codable {
 }
 
 // MARK: - Metadata
-struct Metadata: Codable {
+public struct Metadata: Codable {
 }
