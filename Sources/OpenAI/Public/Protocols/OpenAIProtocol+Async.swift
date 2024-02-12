@@ -12,7 +12,7 @@ import Foundation
 @available(tvOS 13.0, *)
 @available(watchOS 6.0, *)
 public extension OpenAIProtocol {
-    
+
     @available(*, deprecated, message: "Completions are now marked 'Legacy' in OpenAI API, use chats instead.")
     func completions(
         query: CompletionsQuery
@@ -20,15 +20,15 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             completions(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
     }
-    
+
     @available(*, deprecated, message: "Completions are now marked 'Legacy' in OpenAI API, use chatsStream instead.")
     func completionsStream(
         query: CompletionsQuery
@@ -48,40 +48,40 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             images(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
     }
-    
+
     func imageEdits(
         query: ImageEditsQuery
     ) async throws -> ImagesResult {
         try await withCheckedThrowingContinuation { continuation in
             imageEdits(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
     }
-    
+
     func imageVariations(
         query: ImageVariationsQuery
     ) async throws -> ImagesResult {
         try await withCheckedThrowingContinuation { continuation in
             imageVariations(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
@@ -93,30 +93,30 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             embeddings(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
     }
-    
+
     func chats(
         query: ChatQuery
     ) async throws -> ChatResult {
         try await withCheckedThrowingContinuation { continuation in
             chats(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
     }
-    
+
     func chatsStream(
         query: ChatQuery
     ) -> AsyncThrowingStream<ChatStreamResult, Error> {
@@ -128,90 +128,90 @@ public extension OpenAIProtocol {
             }
         }
     }
-    
+
     func edits(
         query: EditsQuery
     ) async throws -> EditsResult {
         try await withCheckedThrowingContinuation { continuation in
             edits(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
     }
-    
+
     func model(
         query: ModelQuery
     ) async throws -> ModelResult {
         try await withCheckedThrowingContinuation { continuation in
             model(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
     }
-    
+
     func models() async throws -> ModelsResult {
         try await withCheckedThrowingContinuation { continuation in
             models() { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
     }
-    
+
     func moderations(
         query: ModerationsQuery
     ) async throws -> ModerationsResult {
         try await withCheckedThrowingContinuation { continuation in
             moderations(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
     }
-    
+
     func audioTranscriptions(
         query: AudioTranscriptionQuery
     ) async throws -> AudioTranscriptionResult {
         try await withCheckedThrowingContinuation { continuation in
             audioTranscriptions(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
     }
-    
+
     func audioTranslations(
         query: AudioTranslationQuery
     ) async throws -> AudioTranslationResult {
         try await withCheckedThrowingContinuation { continuation in
             audioTranslations(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
@@ -226,10 +226,10 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             assistants(query: query, method: method, after: after) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
@@ -242,10 +242,10 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             assistantModify(query: query, asstId: asstId) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
@@ -257,10 +257,10 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             threads(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
@@ -273,10 +273,10 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             runs(threadId: threadId, query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
@@ -322,10 +322,10 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             runRetrieve(threadId: threadId, runId: runId) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
@@ -338,10 +338,10 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             threadsMessages(threadId: threadId, before: before) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
@@ -354,10 +354,10 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             threadsAddMessage(threadId: threadId, query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
@@ -368,10 +368,10 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             files(query: query) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }
@@ -383,10 +383,26 @@ public extension OpenAIProtocol {
         try await withCheckedThrowingContinuation { continuation in
             getFiles(method: method) { result in
                 switch result {
-                case let .success(success):
-                    return continuation.resume(returning: success)
-                case let .failure(failure):
-                    return continuation.resume(throwing: failure)
+                    case let .success(success):
+                        return continuation.resume(returning: success)
+                    case let .failure(failure):
+                        return continuation.resume(throwing: failure)
+                }
+            }
+        }
+    }
+
+    func canceledRun(
+        thread: String,
+        run: String
+    ) async throws -> CanceledRunResult {
+        try await withCheckedThrowingContinuation { continuation in
+            cancelRun(threadId: thread, runId: run) { result in
+                switch result {
+                    case .success(let success):
+                        return continuation.resume(returning: success)
+                    case .failure(let failure):
+                        return continuation.resume(throwing: failure)
                 }
             }
         }

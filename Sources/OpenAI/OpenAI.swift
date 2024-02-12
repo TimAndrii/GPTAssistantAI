@@ -81,6 +81,10 @@ final public class OpenAI: OpenAIProtocol {
         performRequest(request: JSONRequest<RunsResult>(body: query, url: buildRunsURL(path: .runs, threadId: threadId)), completion: completion)
     }
 
+    public func cancelRun(threadId: String, runId: String, completion: @escaping (Result<CanceledRunResult, Error>) -> Void) {
+        performRequest(request: JSONRequest<CanceledRunResult>(url: buildRunRetrieveURL(path: .cancelRun, threadId: threadId, runId: runId)), completion: completion)
+    }
+
     public func threads(query: ThreadsQuery, completion: @escaping (Result<ThreadsResult, Error>) -> Void) {
         performRequest(request: JSONRequest<ThreadsResult>(body: query, url: buildURL(path: .threads)), completion: completion)
     }
@@ -165,7 +169,7 @@ extension OpenAI {
     func performRequest<ResultType: Codable>(request: any URLRequestBuildable, completion: @escaping (Result<ResultType, Error>) -> Void) {
         do {
             let request = try request.build(token: configuration.token, organizationIdentifier: configuration.organizationIdentifier, timeoutInterval: configuration.timeoutInterval)
-            print(request, "🔥")
+            
             let task = session.dataTask(with: request) { data, response, error in
                 if let error = error {
                     completion(.failure(error))
@@ -277,6 +281,7 @@ extension APIPath {
     static let retrieveSteps = "/v1/threads/THREAD_ID/runs/RUN_ID/steps"
     static let submitToolOutputs = "/v1/threads/THREAD_ID/runs/RUN_ID/submit_tool_outputs"
     static let files = "/v1/files"
+    static let cancelRun = "/v1/threads/THREAD_ID/runs/RUN_ID/cancel"
     // 1106 end
 
     static let completions = "/v1/completions"

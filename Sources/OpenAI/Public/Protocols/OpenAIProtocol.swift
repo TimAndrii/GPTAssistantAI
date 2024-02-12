@@ -418,5 +418,7 @@ public protocol OpenAIProtocol {
 
     func getFiles(method: String, completion: @escaping (Result<AllFilesResult, Error>) -> Void)
 
+    func cancelRun(threadId: String, runId: String, completion: @escaping (Result<CanceledRunResult, Error>) -> Void)
+
     // END new functionality added to OpenAI Beta on 11-06-23 end
 }

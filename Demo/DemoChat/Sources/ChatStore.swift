@@ -101,6 +101,9 @@ public final class ChatStore: ObservableObject {
                     let runsResult = try await openAIClient.runs(threadId: threadsResult.id, query: runsQuery)
 
                     // check in on the run every time the poller gets hit.
+
+                    let res = try await openAIClient.canceledRun(thread: threadsResult.id, run: runsResult.id)
+
                     startPolling(conversationId: conversationId, runId: runsResult.id, threadId: threadsResult.id)
                 }
                 catch {
