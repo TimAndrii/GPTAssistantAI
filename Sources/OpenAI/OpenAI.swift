@@ -169,6 +169,7 @@ extension OpenAI {
     func performRequest<ResultType: Codable>(request: any URLRequestBuildable, completion: @escaping (Result<ResultType, Error>) -> Void) {
         do {
             let request = try request.build(token: configuration.token, organizationIdentifier: configuration.organizationIdentifier, timeoutInterval: configuration.timeoutInterval)
+            print("\(request) 🔥")
             
             let task = session.dataTask(with: request) { data, response, error in
                 if let error = error {
