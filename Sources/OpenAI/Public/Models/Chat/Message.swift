@@ -54,7 +54,7 @@ public struct Message: Codable, Equatable {
         self.init(role: role, content: stringOrCodable, name: name, toolCalls: toolCalls, imageData: imageData)
     }
     
-    public init(role: Role, content codable: StringOrChatContent? = nil, name: String? = nil, functionCall: ChatFunctionCall? = nil, imageData: String? = nil) {
+    public init(role: Role, content codable: StringOrChatContent? = nil, name: String? = nil, functionCall: ChatFunctionCall? = nil, imageData: Data? = nil) {
         let stringOrCodable: StringOrCodable<[ChatContent]>?
         
         if let string = codable as? String {
