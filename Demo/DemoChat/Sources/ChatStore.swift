@@ -91,6 +91,8 @@ public final class ChatStore: ObservableObject {
                 localMessage.isLocal = true
                 conversations[conversationIndex].messages.append(localMessage)
 
+                
+
                 do {
                     let threadsQuery = ThreadsQuery(messages: [])
                     let threadsResult = try await openAIClient.threads(query: threadsQuery)

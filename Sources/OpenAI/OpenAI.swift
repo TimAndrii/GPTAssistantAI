@@ -162,9 +162,35 @@ final public class OpenAI: OpenAIProtocol {
     public func audioTranslations(query: AudioTranslationQuery, completion: @escaping (Result<AudioTranslationResult, Error>) -> Void) {
         performRequest(request: MultipartFormDataRequest<AudioTranslationResult>(body: query, url: buildURL(path: .audioTranslations)), completion: completion)
     }
+
+    public func audioCreateSpeech(query: AudioSpeechQuery, completion: @escaping (Result<AudioSpeechResult, Error>) -> Void) {
+        performSpeechRequest(request: JSONRequest<AudioSpeechResult>(body: query, url: buildURL(path: .audioSpeech)), completion: completion)
+    }
 }
 
 extension OpenAI {
+
+    func performSpeechRequest(request: any URLRequestBuildable, completion: @escaping (Result<AudioSpeechResult, Error>) -> Void) {
+        do {
+            let request = try request.build(token: configuration.token,
+                                            organizationIdentifier: configuration.organizationIdentifier,
+                                            timeoutInterval: configuration.timeoutInterval)
+            print("\(request) 🔥")
+            let task = session.dataTask(with: request) { data, _, error in
+                if let error = error {
+                    return completion(.failure(error))
+                }
+                guard let data = data else {
+                    return completion(.failure(OpenAIError.emptyData))
+                }
+
+                completion(.success(AudioSpeechResult(audio: data)))
+            }
+            task.resume()
+        } catch {
+            completion(.failure(error))
+        }
+    }
 
     func performRequest<ResultType: Codable>(request: any URLRequestBuildable, completion: @escaping (Result<ResultType, Error>) -> Void) {
         do {
@@ -292,6 +318,7 @@ extension APIPath {
     static let models = "/v1/models"
     static let moderations = "/v1/moderations"
     
+    static let audioSpeech = "/v1/audio/speech"
     static let audioTranscriptions = "/v1/audio/transcriptions"
     static let audioTranslations = "/v1/audio/translations"
     
