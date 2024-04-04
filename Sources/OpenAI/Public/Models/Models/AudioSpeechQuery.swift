@@ -7,23 +7,23 @@
 
 import Foundation
 
+/// Encapsulates the voices available for audio generation.
+///
+/// To get aquinted with each of the voices and listen to the samples visit:
+/// [OpenAI Text-to-Speech – Voice Options](https://platform.openai.com/docs/guides/text-to-speech/voice-options)
+public enum AudioSpeechVoice: String, Codable, CaseIterable {
+    case alloy
+    case echo
+    case fable
+    case onyx
+    case nova
+    case shimmer
+}
+
+
 /// Generates audio from the input text.
 /// Learn more: [OpenAI Speech – Documentation](https://platform.openai.com/docs/api-reference/audio/createSpeech)
 public struct AudioSpeechQuery: Codable {
-    
-    /// Encapsulates the voices available for audio generation.
-    ///
-    /// To get aquinted with each of the voices and listen to the samples visit:
-    /// [OpenAI Text-to-Speech – Voice Options](https://platform.openai.com/docs/guides/text-to-speech/voice-options)
-    public enum AudioSpeechVoice: String, Codable, CaseIterable {
-        case alloy
-        case echo
-        case fable
-        case onyx
-        case nova
-        case shimmer
-    }
-    
     /// Encapsulates the response formats available for audio data.
     ///
     /// **Formats:**
