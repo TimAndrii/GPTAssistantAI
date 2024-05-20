@@ -29,6 +29,7 @@ public struct Message: Codable, Equatable {
         case assistant
         case user
         case function
+        case info
     }
     
     enum CodingKeys: String, CodingKey {

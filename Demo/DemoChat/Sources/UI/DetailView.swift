@@ -283,6 +283,8 @@ struct ChatBubble: View {
               Spacer(minLength: 24)
             case .system:
                 EmptyView()
+            default:
+                    EmptyView()
             }
         }
     }
