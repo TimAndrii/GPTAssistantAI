@@ -17,6 +17,8 @@ public struct Message: Codable, Equatable {
     /// The name of the author of this message. `name` is required if role is `function`, and it should be the name of the function whose response is in the `content`. May contain a-z, A-Z, 0-9, and underscores, with a maximum length of 64 characters.
     public let name: String?
 
+    public let date: Date?
+
     public let imageData: Data?
 
     @available(*, deprecated, message: "use toolCalls instead")
@@ -38,6 +40,7 @@ public struct Message: Codable, Equatable {
         case name
         case functionCall = "function_call"
         case imageData
+        case date
 //        case toolCalls = "tool_calls"
     }
     
@@ -75,6 +78,7 @@ public struct Message: Codable, Equatable {
         self.name = name
         self.functionCall = nil
         self.imageData = imageData
+        self.date = nil
 //        self.toolCalls = []
     }
     
@@ -84,6 +88,7 @@ public struct Message: Codable, Equatable {
         self.name = name
         self.functionCall = functionCall
         self.imageData = imageData
+        self.date = nil
 //        self.toolCalls = []
     }
     
@@ -99,6 +104,7 @@ public struct Message: Codable, Equatable {
         self.name = name
 //        self.toolCalls = toolCalls
         self.functionCall = nil
+        self.date = nil
         self.imageData = imageData
     }
 
