@@ -72,23 +72,32 @@ public struct Message: Codable, Equatable {
         self.init(role: role, content: stringOrCodable, name: name, functionCall: functionCall, imageData: imageData)
     }
     
-    public init(role: Role, content: StringOrCodable<[ChatContent]>? = nil, name: String? = nil, imageData: Data? = nil) {
+    public init(role: Role, 
+                content: StringOrCodable<[ChatContent]>? = nil,
+                name: String? = nil,
+                imageData: Data? = nil,
+                date: Date?) {
         self.role = role
         self.content = content
         self.name = name
         self.functionCall = nil
         self.imageData = imageData
-        self.date = nil
+        self.date = date
 //        self.toolCalls = []
     }
     
-    public init(role: Role, content: StringOrCodable<[ChatContent]>? = nil, name: String? = nil, functionCall: ChatFunctionCall?, imageData: Data? = nil) {
+    public init(role: Role, 
+                content: StringOrCodable<[ChatContent]>? = nil,
+                name: String? = nil,
+                functionCall: ChatFunctionCall?,
+                imageData: Data? = nil,
+                date: Date?) {
         self.role = role
         self.content = content
         self.name = name
         self.functionCall = functionCall
         self.imageData = imageData
-        self.date = nil
+        self.date = date
 //        self.toolCalls = []
     }
     
@@ -97,14 +106,15 @@ public struct Message: Codable, Equatable {
         content: StringOrCodable<[ChatContent]>? = nil,
         name: String? = nil,
         toolCalls: [ToolCall]?,
-        imageData: Data? = nil
+        imageData: Data? = nil,
+        date: Date?
     ) {
         self.role = role
         self.content = content
         self.name = name
 //        self.toolCalls = toolCalls
         self.functionCall = nil
-        self.date = nil
+        self.date = date
         self.imageData = imageData
     }
 
