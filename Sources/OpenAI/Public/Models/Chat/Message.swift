@@ -76,7 +76,7 @@ public struct Message: Codable, Equatable {
                 content: StringOrCodable<[ChatContent]>? = nil,
                 name: String? = nil,
                 imageData: Data? = nil,
-                date: Date?) {
+                date: Date? = nil) {
         self.role = role
         self.content = content
         self.name = name
@@ -91,7 +91,7 @@ public struct Message: Codable, Equatable {
                 name: String? = nil,
                 functionCall: ChatFunctionCall?,
                 imageData: Data? = nil,
-                date: Date?) {
+                date: Date? = nil) {
         self.role = role
         self.content = content
         self.name = name
@@ -107,7 +107,7 @@ public struct Message: Codable, Equatable {
         name: String? = nil,
         toolCalls: [ToolCall]?,
         imageData: Data? = nil,
-        date: Date?
+        date: Date? = nil
     ) {
         self.role = role
         self.content = content
