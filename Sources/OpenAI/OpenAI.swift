@@ -85,7 +85,7 @@ final public class OpenAI: OpenAIProtocol {
         performRequest(request: JSONRequest<CanceledRunResult>(url: buildRunRetrieveURL(path: .cancelRun, threadId: threadId, runId: runId)), completion: completion)
     }
 
-    public func threads(query: ThreadsQuery, completion: @escaping (Result<ThreadsResult, Error>) -> Void) {
+    public func threads(query: ThreadsQuery? = nil, completion: @escaping (Result<ThreadsResult, Error>) -> Void) {
         performRequest(request: JSONRequest<ThreadsResult>(body: query, url: buildURL(path: .threads)), completion: completion)
     }
 

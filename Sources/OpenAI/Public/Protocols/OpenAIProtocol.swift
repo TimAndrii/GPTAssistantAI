@@ -295,7 +295,7 @@ public protocol OpenAIProtocol {
      - Parameter completion: The completion handler to be executed upon completion of the threads request.
                           Returns a `Result` of type `ThreadsResult` if successful, or an `Error` if an error occurs.
      **/
-    func threads(query: ThreadsQuery, completion: @escaping (Result<ThreadsResult, Error>) -> Void)
+    func threads(query: ThreadsQuery?, completion: @escaping (Result<ThreadsResult, Error>) -> Void)
 
     /**
      This function sends a runs query to the OpenAI API and creates a run. The Runs API in this usage enables you to create a run.

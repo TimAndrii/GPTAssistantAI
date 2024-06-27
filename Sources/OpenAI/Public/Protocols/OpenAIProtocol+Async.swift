@@ -252,7 +252,7 @@ public extension OpenAIProtocol {
     }
 
     func threads(
-        query: ThreadsQuery
+        query: ThreadsQuery?
     ) async throws -> ThreadsResult {
         try await withCheckedThrowingContinuation { continuation in
             threads(query: query) { result in
