@@ -84,46 +84,10 @@ public final class ChatStore: ObservableObject {
         // For assistant case we send chats to thread and then poll, polling will receive sent chat + new assistant messages.
         case .assistant:
             userMassage = message
-            // First message in an assistant thread.
-            if conversations[conversationIndex].messages.count == 0 {
-
-                var localMessage = message
-                localMessage.isLocal = true
-                conversations[conversationIndex].messages.append(localMessage)
-
-                
-
+                let currentThreadId = "thread_p69xMwPEVND2NSUcQh8ZfinM"
                 do {
-                    let threadsQuery = ThreadsQuery(messages: [])
-                    let threadsResult = try await openAIClient.threads(query: threadsQuery)
-
-                    guard let currentAssistantId = conversations[conversationIndex].assistantId else { return print("No assistant selected.")}
-
-                    let runsQuery = RunsQuery(assistantId:  currentAssistantId)
-                    let runsResult = try await openAIClient.runs(threadId: threadsResult.id, query: runsQuery)
-
-                    // check in on the run every time the poller gets hit.
-
-                    let res = try await openAIClient.canceledRun(thread: threadsResult.id, run: runsResult.id)
-
-                    startPolling(conversationId: conversationId, runId: runsResult.id, threadId: threadsResult.id)
-                }
-                catch {
-                    print("error: \(error) creating thread w/ message")
-                }
-            }
-            // Subsequent messages on the assistant thread.
-            else {
-
-                var localMessage = message
-                localMessage.isLocal = true
-                conversations[conversationIndex].messages.append(localMessage)
-
-                do {
-                    guard let currentThreadId else { return print("No thread to add message to.")}
-
                     let _ = try await openAIClient.threadsAddMessage(threadId: currentThreadId,
-                                                                     query: ThreadAddMessageQuery(role: message.role.rawValue, content: message.content))
+                                                                     query: ThreadAddMessageQuery(role: message.role.rawValue, content: .object([.text("який колір тут переважає"), .imageFile("file-4jkawlmJjgsF8nyNKN46YZ1K")])))
 
                     guard let currentAssistantId = conversations[conversationIndex].assistantId else { return print("No assistant selected.")}
 
@@ -137,7 +101,7 @@ public final class ChatStore: ObservableObject {
                     print("error: \(error) adding to thread w/ message")
                 }
             }
-        }
+
     }
 
     @MainActor

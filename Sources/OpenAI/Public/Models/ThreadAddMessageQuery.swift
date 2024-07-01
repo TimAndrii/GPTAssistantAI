@@ -8,8 +8,9 @@
 import Foundation
 
 public struct ThreadAddMessageQuery: Equatable, Codable {
+    
     public let role: String
-    public let content: String
+    public let content: StringOrCodable<[ChatContent]>?
 
     enum CodingKeys: String, CodingKey {
         case role
@@ -17,7 +18,7 @@ public struct ThreadAddMessageQuery: Equatable, Codable {
 
     }
     
-    public init(role: String, content: String) {
+    public init(role: String, content: StringOrCodable<[ChatContent]>) {
         self.role = role
         self.content = content
     }
