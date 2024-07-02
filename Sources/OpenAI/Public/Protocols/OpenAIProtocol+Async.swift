@@ -423,4 +423,21 @@ public extension OpenAIProtocol {
             }
         }
     }
+
+    func deleteFile(
+        fileId: String
+    ) async throws -> FilesDeleteResult {
+        try await withCheckedThrowingContinuation { continuation in
+            deleteFile(fileId: fileId) { result in
+                switch result {
+                    case .success(let success):
+                        return continuation.resume(returning: success)
+                    case .failure(let failure):
+                        return continuation.resume(throwing: failure)
+                }
+            }
+        }
+    }
+
+    
 }

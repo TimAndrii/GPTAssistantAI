@@ -30,3 +30,15 @@ public struct DatumFiles: Codable {
         case filename, purpose
     }
 }
+
+public struct FilesDeleteResult: Codable, Equatable {
+    public let id: String?
+    public let object: String?
+    public let deleted: Bool?
+    
+    enum CodingKeys: CodingKey {
+        case id
+        case object
+        case deleted
+    }
+}

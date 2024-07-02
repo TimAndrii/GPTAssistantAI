@@ -173,6 +173,13 @@ public extension OpenAIProtocol {
         }
         .eraseToAnyPublisher()
     }
+
+    func deleteFile(fileId: String) -> AnyPublisher<FilesDeleteResult, Error> {
+        Future<FilesDeleteResult, Error> {
+            deleteFile(fileId: fileId, completion: $0)
+        }
+        .eraseToAnyPublisher()
+    }
 }
 
 #endif

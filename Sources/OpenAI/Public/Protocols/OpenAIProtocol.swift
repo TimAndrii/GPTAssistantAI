@@ -420,6 +420,8 @@ public protocol OpenAIProtocol {
 
     func cancelRun(threadId: String, runId: String, completion: @escaping (Result<CanceledRunResult, Error>) -> Void)
 
+    func deleteFile(fileId: String, completion: @escaping (Result<FilesDeleteResult, Error>) -> Void)
+
     // END new functionality added to OpenAI Beta on 11-06-23 end
 
     /**

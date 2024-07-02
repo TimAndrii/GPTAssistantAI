@@ -166,6 +166,11 @@ final public class OpenAI: OpenAIProtocol {
     public func audioCreateSpeech(query: AudioSpeechQuery, completion: @escaping (Result<AudioSpeechResult, Error>) -> Void) {
         performSpeechRequest(request: JSONRequest<AudioSpeechResult>(body: query, url: buildURL(path: .audioSpeech)), completion: completion)
     }
+
+    public func deleteFile(fileId: String, completion: @escaping (Result<FilesDeleteResult, any Error>) -> Void) {
+        performRequest(request: JSONRequest<FilesDeleteResult>(url: buildFileDeleteID(path: .deleteFile, fileID: fileId), method: "DELETE"), completion: completion)
+    }
+
 }
 
 extension OpenAI {
@@ -294,6 +299,15 @@ extension OpenAI {
 
         return components.url!
     }
+
+    func buildFileDeleteID(path: String, fileID: String) -> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = configuration.host
+        components.path = path.replacingOccurrences(of: "FILE_ID", with: fileID)
+
+        return components.url!
+    }
 }
 
 typealias APIPath = String
@@ -309,6 +323,7 @@ extension APIPath {
     static let submitToolOutputs = "/v1/threads/THREAD_ID/runs/RUN_ID/submit_tool_outputs"
     static let files = "/v1/files"
     static let cancelRun = "/v1/threads/THREAD_ID/runs/RUN_ID/cancel"
+    static let deleteFile = "/v1/files/FILE_ID"
     // 1106 end
 
     static let completions = "/v1/completions"
