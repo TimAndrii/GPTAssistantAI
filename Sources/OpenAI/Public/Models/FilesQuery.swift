@@ -14,7 +14,7 @@ public struct FilesQuery: Codable {
     public let file: Data
     public let fileName: String
 
-    public let contentType: String
+    public let contentType: String?
 
     enum CodingKeys: String, CodingKey {
         case purpose
@@ -23,7 +23,7 @@ public struct FilesQuery: Codable {
         case contentType
     }
     
-    public init(purpose: String, file: Data, fileName: String, contentType: String) {
+    public init(purpose: String, file: Data, fileName: String, contentType: String? = nil) {
         self.purpose = purpose
         self.file = file
         self.fileName = fileName
