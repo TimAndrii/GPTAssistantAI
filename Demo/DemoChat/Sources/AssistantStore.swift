@@ -62,7 +62,7 @@ public final class AssistantStore: ObservableObject {
                                         required: ["Hello"])
                      )
             ])
-            let query = AssistantsQuery(model: Model.gpt4_1106_preview, name: name, description: description, instructions: instructions, tools: tools, fileIds: fileIds)
+            let query = AssistantsQuery(model: Model.gpt4o, name: name, description: description, instructions: instructions, tools: tools, fileIds: fileIds)
             let response = try await openAIClient.assistantModify(query: query, asstId: asstId)
 
             // Returns assistantId

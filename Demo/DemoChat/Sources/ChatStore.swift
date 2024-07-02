@@ -86,8 +86,8 @@ public final class ChatStore: ObservableObject {
             userMassage = message
                 let currentThreadId = "thread_p69xMwPEVND2NSUcQh8ZfinM"
                 do {
-                    let _ = try await openAIClient.threadsAddMessage(threadId: currentThreadId,
-                                                                     query: ThreadAddMessageQuery(role: message.role.rawValue, content: .object([.text("який колір тут переважає"), .imageFile("file-4jkawlmJjgsF8nyNKN46YZ1K")])))
+                    let res = try await openAIClient.threadsAddMessage(threadId: currentThreadId,
+                                                                     query: ThreadAddMessageQuery(role: message.role.rawValue, content: .object([.text("який колір тут переважає"), .imageFile("file-nDkuDCRRvwRLPmsZdGckWzhn")])))
 
                     guard let currentAssistantId = conversations[conversationIndex].assistantId else { return print("No assistant selected.")}
 
