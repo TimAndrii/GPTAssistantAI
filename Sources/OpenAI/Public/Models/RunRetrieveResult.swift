@@ -10,7 +10,7 @@ import Foundation
 public struct RunRetreiveResult: Codable, Equatable {
 
     public let status: String
-    public let requiredAction: RequiredAction
+    public let requiredAction: RequiredAction?
 
     enum CodingKeys: String, CodingKey {
         case status
