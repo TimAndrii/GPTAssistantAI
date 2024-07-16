@@ -19,10 +19,13 @@ public struct RunRetreiveResult: Codable, Equatable {
 }
 
 public struct RequiredAction: Codable, Equatable {
-    public let toolCalls: [ToolCall]?
+    public let toolCalls: [ToolCallValue]?
 
     enum CodingKeys: String, CodingKey {
         case toolCalls = "tool_calls"
     }
 }
 
+public struct ToolCallValue: Codable, Equatable {
+    public let id: String
+}
