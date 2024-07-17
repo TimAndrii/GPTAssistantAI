@@ -27,7 +27,7 @@ public struct Datum: Codable {
     public let createdAt: Int?
     public let runID, assistantID, threadID, type: String?
     public let status: String?
-    public let cancelledAt, completedAt: String?
+    public let cancelledAt, completedAt: Int?
     public let expiresAt: Int?
     public let failedAt, lastError: String?
     public let stepDetails: StepDetails?
